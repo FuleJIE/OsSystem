@@ -253,7 +253,7 @@ html.dark {
   }
 }
 .container {
-  min-width: 400px;
+  min-width: 700px;
   min-height: 300px;
   width: 45%;
   height: 50%;
@@ -347,7 +347,7 @@ html.dark {
     .info {
       display: flex;
       align-items: center;
-      font-size: 15px;
+      font-size: 13px;
       img {
         width: 15px;
         margin: 0 7px 0 10px;

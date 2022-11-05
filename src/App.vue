@@ -104,7 +104,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
   outline: none;
-  font-family: "Roboto", sans-serif;
+  // font-family: "Roboto", sans-serif;
   &::-webkit-scrollbar {
     width: 4px;
   }

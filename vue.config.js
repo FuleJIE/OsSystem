@@ -9,4 +9,11 @@ module.exports = {
       background_color: "#000000",
     },
   },
+  devServer: {
+    proxy: {
+      "/fileSystem": {
+        target: "http://127.0.0.1:8087",
+      },
+    },
+  },
 };
