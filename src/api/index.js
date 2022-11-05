@@ -17,3 +17,11 @@ export function getCurrentFile(data) {
     headers: { "Content-Type": "text/plain" },
   });
 }
+
+//获取当前目录树
+export function getCurrentTree() {
+  return requests({
+    url: "/fileSystem/getFolderTree",
+    method: "get",
+  });
+}

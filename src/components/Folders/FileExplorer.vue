@@ -85,24 +85,21 @@
             @dblclick="goTargetPath(item)"
           >
             <img
-              v-if="item.fileType == '文件夹'"
+              v-if="item.fileType == 8"
               src="../../assets/file-icons/fileContent.png"
             />
-            <img
-              v-if="item.fileType == '文本'"
-              src="../../assets/file-icons/txt.png"
-            />
+            <img v-else src="../../assets/file-icons/txt.png" />
             <div class="content1">
               <span>{{ item.fileName }}</span>
             </div>
             <div class="content2">
-              <span>{{ item.changeTime }}</span>
+              <span>{{ item.updateTime }}</span>
             </div>
             <div class="content3">
-              <span>{{ item.fileType }}</span>
+              <span>{{ item.fileType == 8 ? "文件夹" : "文本" }}</span>
             </div>
-            <div class="content4">
-              <span>{{ item.fileSize }}</span>
+            <div class="content4" v-if="item.fileType != 8">
+              <span>{{ item.occupyLength }}KB</span>
             </div>
           </li>
         </ul>
@@ -114,8 +111,7 @@
 
 <script>
 import Layout from "../Layouts/FolderLayout";
-import { getCurrentFile } from "../../api";
-// import { getCurrentFile } from "../../api/index";
+import { getCurrentFile, getCurrentTree } from "../../api";
 
 export default {
   name: "FileExplorer",
@@ -123,53 +119,53 @@ export default {
   data() {
     return {
       treelist: [
-        {
-          label: "Windows(C:)",
-          children: [
-            {
-              label: "User",
-            },
-            {
-              label: "Program Files",
-            },
-            {
-              label: "DeskTop",
-            },
-          ],
-        },
-        {
-          label: "Data(D:)",
-          children: [
-            {
-              label: "Music",
-            },
-          ],
-        },
+        // {
+        //   label: "Windows(C:)",
+        //   children: [
+        //     {
+        //       label: "User",
+        //     },
+        //     {
+        //       label: "Program Files",
+        //     },
+        //     {
+        //       label: "DeskTop",
+        //     },
+        //   ],
+        // },
+        // {
+        //   label: "Data(D:)",
+        //   children: [
+        //     {
+        //       label: "Music",
+        //     },
+        //   ],
+        // },
       ],
       defaultProps: {
-        children: "children",
-        label: "label",
+        children: "lists",
+        label: "folderName",
       },
       path: ["C:"],
       contentList: [
-        {
-          fileName: "123.txt",
-          changeTime: "2022/10/31 16:33",
-          fileType: "文本",
-          fileSize: "3KB",
-        },
-        {
-          fileName: "mytxt",
-          changeTime: "2022/10/31 15:30",
-          fileType: "文件夹",
-          fileSize: "",
-        },
-        {
-          fileName: "DeskTop",
-          changeTime: "2022/10/31 11:30",
-          fileType: "文件夹",
-          fileSize: "",
-        },
+        // {
+        //   fileName: "123.txt",
+        //   updateTime: "2022/10/31 16:33",
+        //   fileType: "文本",
+        //   occupyLength: "3KB",
+        // },
+        // {
+        //   fileName: "mytxt",
+        //   updateTime: "2022/10/31 15:30",
+        //   fileType: "文件夹",
+        //   occupyLength: "",
+        // },
+        // {
+        //   fileName: "DeskTop",
+        //   updateTime: "2022/10/31 11:30",
+        //   fileType: "文件夹",
+        //   occupyLength: "",
+        // },
       ],
       isShowNull: false,
       historyList: ["C:"],
@@ -187,44 +183,45 @@ export default {
     },
   },
   methods: {
+    //文件树点击操作
     handleNodeClick(data) {
-      console.log(data);
+      getCurrentFile(data.folderName)
+        .then((res) => {
+          this.path.splice(0, this.path.length, ...data.folderName.split("/"));
+          this.contentList = res.data;
+          if (res.data.length != 0) {
+            this.isShowNull = false;
+          } else {
+            this.isShowNull = true;
+          }
+          this.updateHistoryList();
+        })
+        .catch((err) => {
+          //待完善，是否需要增加警告弹窗（需要则可直接调用changeTargetPath）
+          console.log(err);
+          // console.log("Windows找不到“", newPath, "”。请检查拼写并重试。");
+        });
     },
     //点击列表，前往新路径
     goTargetPath(item) {
       //判断文件类型，若为文本则直接打开，若为文件夹，则请求子目录
-      if (item.fileType == "文本") {
+      if (item.fileType == 1 || item.fileType == 10) {
         //请求文本内容
       } else {
         this.path.splice(this.path.length, 0, item.fileName);
         //调用接口访问，若有子目录，则更新文件数组，否则显示为空
-        getCurrentFile("C:")
+        getCurrentFile(this.inputPath)
           .then((res) => {
-            console.log("res==", res);
+            this.contentList = res.data;
+            if (res.data.length != 0) {
+              this.isShowNull = false;
+            } else {
+              this.isShowNull = true;
+            }
           })
           .catch((err) => {
             console.log(err);
           });
-        if (this.inputPath == "C:/DeskTop") {
-          this.contentList = [
-            {
-              fileName: "Game",
-              changeTime: "2022/10/31 16:33",
-              fileType: "文件夹",
-              fileSize: "",
-            },
-            {
-              fileName: "Chrome",
-              changeTime: "2022/10/31 15:30",
-              fileType: "文件夹",
-              fileSize: "",
-            },
-          ];
-          this.isShowNull = false;
-        } else {
-          this.contentList = [];
-          this.isShowNull = true;
-        }
         this.updateHistoryList();
       }
     },
@@ -234,64 +231,40 @@ export default {
       if (index < this.path.length - 1) {
         this.path.splice(index + 1, this.path.length - index - 1);
         //请求当前路径下的目录
-        if (this.inputPath == "C:") {
-          this.contentList = [
-            {
-              fileName: "123.txt",
-              changeTime: "2022/10/31 16:33",
-              fileType: "文本",
-              fileSize: "3KB",
-            },
-            {
-              fileName: "Video",
-              changeTime: "2022/10/31 15:30",
-              fileType: "文件夹",
-              fileSize: "",
-            },
-            {
-              fileName: "DeskTop",
-              changeTime: "2022/10/31 11:30",
-              fileType: "文件夹",
-              fileSize: "",
-            },
-          ];
-          this.isShowNull = false;
-        } else {
-          this.contentList = [];
-          this.isShowNull = true;
-        }
+        getCurrentFile(this.inputPath)
+          .then((res) => {
+            this.contentList = res.data;
+            if (res.data.length != 0) {
+              this.isShowNull = false;
+            } else {
+              this.isShowNull = true;
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
         this.updateHistoryList();
       }
     },
     //更改路径，前往新路径
     changeTargetPath(newPath) {
       //先请求新路径是否存在，若存在，则更新path，若不存在，则提示错误路径并且不更新path
-      if (newPath == "C:/DeskTop/Game") {
-        this.path.splice(0, this.path.length, ...newPath.split("/"));
-        this.contentList = [
-          {
-            fileName: "111.txt",
-            changeTime: "2022/10/31 16:33",
-            fileType: "文本",
-            fileSize: "3KB",
-          },
-          {
-            fileName: "222.txt",
-            changeTime: "2022/10/31 15:30",
-            fileType: "文本",
-            fileSize: "36KB",
-          },
-          {
-            fileName: "333.txt",
-            changeTime: "2022/10/31 11:30",
-            fileType: "文本",
-            fileSize: "51KB",
-          },
-        ];
-        this.updateHistoryList();
-      } else {
-        console.log("Windows找不到“", newPath, "”。请检查拼写并重试。");
-      }
+      getCurrentFile(newPath)
+        .then((res) => {
+          this.path.splice(0, this.path.length, ...newPath.split("/"));
+          this.contentList = res.data;
+          if (res.data.length != 0) {
+            this.isShowNull = false;
+          } else {
+            this.isShowNull = true;
+          }
+          this.updateHistoryList();
+        })
+        .catch((err) => {
+          //待完善，增加警告弹窗
+          console.log(err);
+          console.log("Windows找不到“", newPath, "”。请检查拼写并重试。");
+        });
     },
     //更新历史路径队列
     updateHistoryList() {
@@ -312,7 +285,30 @@ export default {
     //回退操作（历史路径）
     BackHistoryList() {
       if (this.historyPoint > 0) {
-        this.changeTargetPath(this.historyList[--this.historyPoint]);
+        // this.changeTargetPath(this.historyList[--this.historyPoint]);
+        getCurrentFile(this.historyList[--this.historyPoint])
+          .then((res) => {
+            this.path.splice(
+              0,
+              this.path.length,
+              ...this.historyList[this.historyPoint].split("/")
+            );
+            this.contentList = res.data;
+            if (res.data.length != 0) {
+              this.isShowNull = false;
+            } else {
+              this.isShowNull = true;
+            }
+          })
+          .catch((err) => {
+            //待完善，增加警告弹窗
+            console.log(err);
+            console.log(
+              "Windows找不到“",
+              this.historyList[this.historyPoint],
+              "”。请检查拼写并重试。"
+            );
+          });
       }
       console.log("HistoryList==", this.historyList);
       console.log("Num==", this.historyPoint);
@@ -320,7 +316,30 @@ export default {
     //前进操作（历史路径）
     ForwardHistoryList() {
       if (this.historyPoint < this.historyList.length - 1) {
-        this.changeTargetPath(this.historyList[++this.historyPoint]);
+        // this.changeTargetPath(this.historyList[++this.historyPoint]);
+        getCurrentFile(this.historyList[++this.historyPoint])
+          .then((res) => {
+            this.path.splice(
+              0,
+              this.path.length,
+              ...this.historyList[this.historyPoint].split("/")
+            );
+            this.contentList = res.data;
+            if (res.data.length != 0) {
+              this.isShowNull = false;
+            } else {
+              this.isShowNull = true;
+            }
+          })
+          .catch((err) => {
+            //待完善，增加警告弹窗
+            console.log(err);
+            console.log(
+              "Windows找不到“",
+              this.historyList[this.historyPoint],
+              "”。请检查拼写并重试。"
+            );
+          });
       }
       console.log("HistoryList==", this.historyList);
       console.log("Num==", this.historyPoint);
@@ -329,11 +348,41 @@ export default {
     upperTargetPath() {
       if (this.path.length > 1) {
         this.path.splice(this.path.length - 1, 1);
+        getCurrentFile(this.inputPath)
+          .then((res) => {
+            this.contentList = res.data;
+            if (res.data.length != 0) {
+              this.isShowNull = false;
+            } else {
+              this.isShowNull = true;
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
         this.updateHistoryList();
       }
       console.log("HistoryList==", this.historyList);
       console.log("Num==", this.historyPoint);
     },
+  },
+  mounted() {
+    //Folder打开时获取"C:"下的文件
+    getCurrentFile("C:")
+      .then((res) => {
+        this.contentList = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    //Folder打开时获取目录树
+    getCurrentTree()
+      .then((res) => {
+        this.treelist.push(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>
@@ -518,7 +567,7 @@ export default {
 }
 .title2 {
   border-right: 0.1em solid #e5e5e5;
-  padding: 0.4em 7em 0.4em 0.4em;
+  padding: 0.4em 10em 0.4em 0.4em;
   user-select: none;
 }
 .title3 {
@@ -537,7 +586,7 @@ export default {
   user-select: none;
 }
 .content2 {
-  width: 11.4em;
+  width: 14.4em;
   color: #6d6d6d;
   user-select: none;
 }
