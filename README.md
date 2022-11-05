@@ -27,6 +27,7 @@ windows 10
 ├─ README.md
 ├─ src --项目根目录
 │  ├─ App.vue --入口组件
+│  ├─ api --封装axios接口文件
 │  ├─ assets --静态资源
 │  ├─ components --公用组件
 │  │  ├─ ContextMenu.vue --右键菜单
