@@ -150,7 +150,7 @@ export default {
       position: relative;
       svg {
         width: 30px;
-        cursor: pointer;
+        user-select: none;
       }
       input {
         position: absolute;

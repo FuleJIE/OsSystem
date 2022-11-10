@@ -49,7 +49,7 @@ export default {
     padding: 5px 15px;
     font-size: 18px;
     font-weight: normal;
-    cursor: pointer;
+    user-select: none;
     border-bottom: 1px solid rgba(black, 0.1);
     &:hover {
       background: #ddd;
@@ -64,7 +64,7 @@ export default {
     justify-content: space-between;
     .icon {
       font-size: 20px;
-      cursor: pointer;
+      user-select: none;
       width: 35px;
     }
     .input-box {
@@ -86,7 +86,7 @@ export default {
           height: 25px;
           border-radius: 10px;
           background: #04aa6d;
-          cursor: pointer;
+          user-select: none;
         }
       }
       span {

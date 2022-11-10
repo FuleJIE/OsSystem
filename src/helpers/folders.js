@@ -12,7 +12,10 @@ export const setFolder = (title, icon, path) => {
     const folders = getLocal("windows-folders");
     const result = folders.find((item) => item.title === title);
 
-    if (result) return false;
+    if (result) {
+      updateShowFolder(result.path);
+      return false;
+    }
     folders.push({
       title,
       icon,

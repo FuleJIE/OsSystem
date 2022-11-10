@@ -198,7 +198,7 @@ export default {
     text-align: right;
     padding: 10px;
     font-size: 14px;
-    cursor: pointer;
+    user-select: none;
     color: darkcyan;
   }
 
@@ -324,7 +324,7 @@ export default {
             height: 25px;
             border-radius: 10px;
             background: darkcyan;
-            cursor: pointer;
+            user-select: none;
           }
         }
         span {

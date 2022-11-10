@@ -79,9 +79,13 @@ button {
     width: 85px;
     min-height: 75px;
   }
+  &:hover {
+    background: #fffdfd1a;
+    border: 1px dotted#ffffff8f;
+  }
   &.active {
-    background: rgba(#0080ff, 0.3);
-    border: 1px solid rgba(#0080ff, 0.8);
+    background: rgb(92 173 253 / 29%);
+    border: 1px solid rgb(79 167 255 / 80%);
   }
   p {
     margin-top: 4px;

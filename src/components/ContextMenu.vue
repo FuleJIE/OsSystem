@@ -1,14 +1,9 @@
 <template>
-  <ul id="rmenu" class="context-menu" v-click-outside="hide">
+  <ul id="rmenu" class="context-menu" ref="ContextMenu" v-click-outside="hide">
     <li>
       <button>
         查看(V)
-        <svg width="10" viewBox="0 0 256 512">
-          <path
-            fill="#ccc"
-            d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-          ></path>
-        </svg>
+        <img class="showOtherBrother" src="../assets/file-icons/menu-arr.png" />
       </button>
       <ul class="sub">
         <li
@@ -44,12 +39,7 @@
     <li>
       <button>
         排序方式(O)
-        <svg width="10" viewBox="0 0 256 512">
-          <path
-            fill="#ccc"
-            d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
-          ></path>
-        </svg>
+        <img class="showOtherBrother" src="../assets/file-icons/menu-arr.png" />
       </button>
       <ul class="sub">
         <li
@@ -166,15 +156,20 @@ html.dark {
   z-index: 9999;
   display: none;
   flex-direction: column;
-  width: 230px;
+  width: 210px;
   padding: 5px 0;
   position: absolute;
   top: 150px;
   left: 150px;
   background: #f8f8f8;
-  box-shadow: 5px 5px 10px -5px #000;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 3px -3px #8e8e8e;
   &.show {
     display: flex;
+  }
+  img {
+    width: 1.2em;
+    height: 1.2em;
   }
   li {
     position: relative;
@@ -184,9 +179,19 @@ html.dark {
       justify-content: space-between;
       height: 26px;
       width: 100%;
-      padding: 0 15px;
+      padding: 0 0 0 30px;
       text-align: left;
       font-size: 12px;
+    }
+    .showOtherBrother {
+      position: relative;
+      font-style: normal;
+      width: 1.4em;
+      height: 1.4em;
+      margin-right: 0.3em;
+      // &:hover {
+      //   transform: rotate(90deg);
+      // }
     }
     &:hover,
     &:focus {
@@ -197,17 +202,22 @@ html.dark {
         transform: translateY(0);
       }
     }
+    &.border-top {
+      margin-top: 3px;
+      padding-top: 3px;
+      border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
+    }
     .sub {
       z-index: 100;
       flex-direction: column;
-      width: 230px;
+      width: 170px;
       padding: 5px 0;
       position: absolute;
       top: 0;
       left: 98%;
       background: #f8f8f8;
       border: 1px solid rgba(0, 0, 0, 0.4);
-      box-shadow: 5px 5px 10px -5px #000;
+      box-shadow: 5px 5px 3px -3px #8e8e8e;
       opacity: 0;
       visibility: hidden;
       transform: translateY(4px);

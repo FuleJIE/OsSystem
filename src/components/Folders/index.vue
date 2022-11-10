@@ -6,17 +6,19 @@
 import Chrome from "./Chrome";
 import FileExplorer from "./FileExplorer";
 import TaskManager from "./TaskManager";
+import NewTxt from "./NewTxt.vue";
+import FileAttribute from "./FileAttribute.vue";
 import Twitter from "./Twitter";
-import FastTyping from "./FastTyping";
-import VueCountriesCities from "./VueCountriesCities";
-import Instagram from "./Instagram";
-import TodoApp from "./TodoApp";
-import VSvgIcons from "./VSvgIcons";
-import AnimateCSS from "./AnimateCSS";
+import WeChat from "./WeChat";
+import QQ from "./QQ";
+import DingTalk from "./DingTalk";
+import VsCode from "./VsCode";
+import CloudMusic from "./CloudMusic";
+import IDEA from "./IDEA";
 import GithubFinder from "./GithubFinder";
 import ChangeBackground from "./ChangeBackground";
 import CardGame from "./CardGame";
-import LiveCSS from "./LiveCSS";
+import Bilibili from "./Bilibili";
 import Minecraft from "./Minecraft";
 import Store from "./Store.vue";
 export default {
@@ -30,18 +32,20 @@ export default {
   components: {
     FileExplorer,
     TaskManager,
+    NewTxt,
+    FileAttribute,
     ChangeBackground,
     GithubFinder,
-    AnimateCSS,
-    VSvgIcons,
-    TodoApp,
-    Instagram,
-    VueCountriesCities,
-    FastTyping,
+    IDEA,
+    CloudMusic,
+    VsCode,
+    DingTalk,
+    QQ,
+    WeChat,
     Chrome,
     Twitter,
     CardGame,
-    LiveCSS,
+    Bilibili,
     Minecraft,
     Store,
   },

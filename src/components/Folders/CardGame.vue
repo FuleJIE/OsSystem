@@ -278,7 +278,7 @@ export default {
     height: 250px;
     width: 250px;
     border-radius: 10px;
-    cursor: pointer;
+    user-select: none;
     transform: rotateY(180deg);
     transition: 300ms;
     overflow: hidden;
@@ -334,7 +334,7 @@ export default {
           display: block;
           width: 100%;
           height: 45px;
-          cursor: pointer;
+          user-select: none;
           background: #0095f6;
           border: none;
           font-size: 15px;
@@ -362,7 +362,7 @@ export default {
       border: none;
       outline: none;
       color: white;
-      cursor: pointer;
+      user-select: none;
       border-radius: 5px;
     }
   }
