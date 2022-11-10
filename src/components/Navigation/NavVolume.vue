@@ -1,6 +1,6 @@
 <template>
   <div class="volumeModal">
-    <h5>Speaker</h5>
+    <h5>扬声器</h5>
     <div class="detail">
       <div class="icon" @click="volume = 0">
         <i class="fas fa-volume-mute" v-if="Number(volume) === 0"></i>

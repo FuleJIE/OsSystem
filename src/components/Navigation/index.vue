@@ -24,7 +24,7 @@
             v-if="Number(battery.level) === 100 && battery.charging"
             class="full"
           >
-            Fully charged ({{ battery.level }}%)
+            电量充满 ({{ battery.level }}%)
           </p>
           <p v-else-if="battery.charging">
             {{ battery.level }}% usable. (charging)
@@ -86,7 +86,7 @@
           <div class="lds-roller">
             <div v-for="i in 8" :key="i" />
           </div>
-          <p>{{ reloadStatus ? "Restarting" : "Shutting Down" }}</p>
+          <p>{{ reloadStatus ? "正在重启" : "正在关机" }}</p>
         </div>
       </transition>
     </div>
@@ -350,7 +350,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgb(62, 62, 189);
+  background: #0078d7;
   z-index: 999;
   p {
     font-size: 22px;

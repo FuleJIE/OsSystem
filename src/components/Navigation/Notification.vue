@@ -1,13 +1,13 @@
 <template>
   <div class="notification">
-    <div class="notification-header">Manage Notifications</div>
+    <div class="notification-header">管理通知</div>
     <div class="notifications">
       <NotificationList v-if="$store.state.notifications.length" />
-      <div class="no-notification" v-else>No new notifications</div>
+      <div class="no-notification" v-else>没有新的通知</div>
     </div>
     <div class="notification-menu">
       <button @click="collapse = !collapse">
-        {{ collapse ? "Expand" : "Collapse" }}
+        {{ collapse ? "展开" : "折叠" }}
       </button>
       <ul>
         <li v-for="(item, key) in menuList" :key="key">
@@ -61,57 +61,57 @@ export default {
       isActive: [],
       menuList: [
         {
-          title: "Location",
+          title: "定位",
           icon: "map-marked-alt",
           collapse: false,
         },
         {
-          title: "Battery Saver",
+          title: "节电模式",
           icon: "battery-three-quarters",
           collapse: false,
         },
         {
-          title: "Bluetooth",
+          title: "蓝牙",
           icon: "bluetooth",
           collapse: false,
         },
         {
-          title: "Night Light",
+          title: "夜间模式",
           icon: "moon",
           collapse: false,
         },
         {
-          title: "Mobile Hotspot",
+          title: "移动热点",
           icon: "mobile-alt",
           collapse: true,
         },
         {
-          title: "Offline Mode",
+          title: "飞行模式",
           icon: "plane",
           collapse: true,
         },
         {
-          title: "Sharing",
+          title: "就近共享",
           icon: "share-square",
           collapse: true,
         },
         {
-          title: "Settings",
+          title: "所有设置",
           icon: "cog",
           collapse: true,
         },
         {
-          title: "Network",
+          title: "网络",
           icon: "network-wired",
           collapse: true,
         },
         {
-          title: "Connect",
+          title: "连接",
           icon: "plug",
           collapse: true,
         },
         {
-          title: "Reflect",
+          title: "投影",
           icon: "tv",
           collapse: true,
         },
@@ -121,12 +121,12 @@ export default {
           collapse: true,
         },
         {
-          title: "Focus Asist",
+          title: "专注助手",
           icon: "moon",
           collapse: true,
         },
         {
-          title: "Screenshot",
+          title: "屏幕截图",
           icon: "window-restore",
           collapse: true,
         },

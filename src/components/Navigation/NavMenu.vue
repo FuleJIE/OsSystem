@@ -5,66 +5,66 @@
     <div class="left-bar">
       <button>
         <i class="fas fa-grip-lines"></i>
-        <span>Start</span>
+        <span>开始</span>
       </button>
       <div class="actions">
         <button>
           <i class="fas fa-user-circle"></i>
-          <span>User</span>
+          <span>用户</span>
         </button>
         <button>
           <i class="far fa-file"></i>
-          <span>Documents</span>
+          <span>文档</span>
         </button>
         <button>
           <i class="fas fa-download"></i>
-          <span>Downloads</span>
+          <span>下载</span>
         </button>
         <button>
           <i class="fas fa-music"></i>
-          <span>Music</span>
+          <span>音乐</span>
         </button>
         <button>
           <i class="fas fa-image"></i>
-          <span>Pictures</span>
+          <span>图片</span>
         </button>
         <button>
           <i class="fas fa-video"></i>
-          <span>Videos</span>
+          <span>视频</span>
         </button>
         <button>
           <i class="fas fa-desktop"></i>
-          <span>Network</span>
+          <span>网络</span>
         </button>
         <button>
           <i class="fas fa-id-card-alt"></i>
-          <span>Personal Folder</span>
+          <span>个人文件夹</span>
         </button>
         <button>
           <i class="fas fa-file"></i>
-          <span>File Explorer</span>
+          <span>文件资源管理器</span>
         </button>
         <button>
           <i class="fas fa-cog"></i>
-          <span>Settings</span>
+          <span>设置</span>
         </button>
         <button class="open-btn">
           <div class="open-btn-modal">
             <button @click="sleep">
               <i class="far fa-moon"></i>
-              <span>Sleep</span>
+              <span>睡眠</span>
             </button>
             <button @click="shutDown">
               <i class="fas fa-power-off"></i>
-              <span>Shut down</span>
+              <span>关机</span>
             </button>
             <button @click="reload">
               <i class="fas fa-undo"></i>
-              <span>Restart</span>
+              <span>重启</span>
             </button>
           </div>
           <i class="fas fa-power-off"></i>
-          <span>Power</span>
+          <span>电源</span>
         </button>
       </div>
     </div>
