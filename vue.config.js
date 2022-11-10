@@ -8,6 +8,13 @@ module.exports = {
     manifestOptions: {
       background_color: "#000000",
     },
+    iconPaths: {
+      favicon32: "favicon.ico",
+      favicon16: "favicon.ico",
+      appleTouchIcon: "favicon.ico",
+      maskIcon: "favicon.ico",
+      msTileImage: "favicon.ico",
+  }
   },
   devServer: {
     proxy: {

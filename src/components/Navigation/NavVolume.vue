@@ -73,7 +73,7 @@ export default {
       flex: 1;
       position: relative;
       input {
-        -webkit-appearance: none;
+        // -webkit-appearance: none;
         width: 100%;
         height: 2px;
         background: #d3d3d3;
