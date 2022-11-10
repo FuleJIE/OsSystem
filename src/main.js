@@ -6,14 +6,14 @@ import VCalendar from "v-calendar";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
-import *as VCharts from 'v-charts'
+import * as VCharts from "v-charts";
 Vue.use(VCharts);
 
-import *as echarts from 'echarts'
-Vue.prototype.$echarts = echarts
+import * as echarts from "echarts";
+Vue.prototype.$echarts = echarts;
 
-import *as moment from 'moment'
-Vue.prototype.$moment = moment
+import * as moment from "moment";
+Vue.prototype.$moment = moment;
 
 import("./helpers/rightClick");
 import("./assets/css/transition.css");

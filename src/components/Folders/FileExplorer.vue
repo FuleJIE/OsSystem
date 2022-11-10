@@ -1,5 +1,5 @@
 <template>
-  <Layout folderName="FileExplorer">
+  <Layout folderName="FileExplorer" id="fileExplorer">
     <div class="fileToolBar"></div>
     <div class="pathTool">
       <div>
@@ -479,7 +479,6 @@ export default {
       //隐藏文件菜单
       let menu2 = this.$refs.fileMenu;
       menu2.style.display = "none";
-      document.getElementById("rmenu").classList.remove("show");
       //指定当前点击文件
       this.clickFile = item;
       let menu = this.$refs.setMenu;
@@ -509,7 +508,8 @@ export default {
       //   var top1 = evt.pageY - 100;
       //   menu.style.top = top1 + "px";
       // }
-
+      document.getElementById("fmenu").style.display = "none";
+      document.getElementById("rmenu").style.display = "none";
       menu.style.display = "block";
     },
     //文件右键菜单
@@ -517,7 +517,6 @@ export default {
       //隐藏操作菜单
       let menu = this.$refs.setMenu;
       menu.style.display = "none";
-      document.getElementById("rmenu").classList.remove("show");
       let menu2 = this.$refs.fileMenu;
       this.isshowFileMenu = true;
       var evt = event || window.event;
@@ -545,7 +544,8 @@ export default {
       //   var top1 = evt.pageY - 100;
       //   menu.style.top = top1 + "px";
       // }
-
+      document.getElementById("smenu").style.display = "none";
+      document.getElementById("rmenu").style.display = "none";
       menu2.style.display = "block";
     },
     noShow() {
@@ -553,6 +553,8 @@ export default {
       menu.style.display = "none";
       let menu2 = this.$refs.fileMenu;
       menu2.style.display = "none";
+      document.getElementById("smenu").style.display = "none";
+      document.getElementById("fmenu").style.display = "none";
     },
     //打开文件夹/文本
     openFile() {

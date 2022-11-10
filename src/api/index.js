@@ -106,24 +106,7 @@ export const getFileSystemList = (params) =>
     params: params,
   });
 
-//获取当前路径下的文件
-export function getCurrentFile(data) {
-  return requests({
-    url: "/fileSystem/listFileInFolder",
-    method: "post",
-    data: data,
-    headers: { "Content-Type": "text/plain" },
-  });
-}
-
-//获取当前目录树
-export function getCurrentTree() {
-  return requests({
-    url: "/fileSystem/getFolderTree",
-    method: "get",
-  });
-}
-
+//获取当前运行中进程相关信息
 export function getExecutingProcess() {
   return requests({
     url: "/allSystem/getExecutingProcess",
@@ -131,6 +114,7 @@ export function getExecutingProcess() {
   });
 }
 
+//获取进程状态表
 export function getProcessTable() {
   return requests({
     url: "/allSystem/getProcessTable",
@@ -138,6 +122,7 @@ export function getProcessTable() {
   });
 }
 
+//获取内存使用情况
 export function getMemoryStatus() {
   return requests({
     url: "/allSystem/getMemoryStatus",
@@ -145,6 +130,7 @@ export function getMemoryStatus() {
   });
 }
 
+//获取磁盘占用情况
 export function DiskOccupy() {
   return requests({
     url: "/fileSystem/DiskOccupy",
@@ -152,6 +138,7 @@ export function DiskOccupy() {
   });
 }
 
+//获取磁盘使用情况
 export function listDiskInfo() {
   return requests({
     url: "/fileSystem/listDiskInfo",
@@ -159,6 +146,7 @@ export function listDiskInfo() {
   });
 }
 
+//获取设备使用情况
 export function getDeviceStatus() {
   return requests({
     url: "/allSystem/getDeviceStatus",
@@ -166,9 +154,26 @@ export function getDeviceStatus() {
   });
 }
 
+//获取PCB使用情况
 export function getPCBStatus() {
   return requests({
     url: "/allSystem/getPCBStatus",
+    method: "get",
+  });
+}
+
+//暂停进程调度
+export function stopThread() {
+  return requests({
+    url: "/allSystem/stopThread",
+    method: "get",
+  });
+}
+
+//继续进程调度
+export function continueThread() {
+  return requests({
+    url: "/allSystem/continueThread",
     method: "get",
   });
 }

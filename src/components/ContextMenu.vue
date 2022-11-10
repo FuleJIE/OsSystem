@@ -90,7 +90,7 @@ export default {
   },
   methods: {
     hide() {
-      document.getElementById("rmenu").classList.remove("show");
+      document.getElementById("rmenu").style.display = "none";
     },
     reload() {
       window.location.reload();

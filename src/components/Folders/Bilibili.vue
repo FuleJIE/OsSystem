@@ -1,5 +1,5 @@
 <template>
-  <Layout folderName="Bilibili">
+  <Layout folderName="Bilibili" class="layout">
     <iframe src="https://www.bilibili.com/"></iframe>
   </Layout>
 </template>
@@ -11,3 +11,11 @@ export default {
   components: { Layout },
 };
 </script>
+<style scoped>
+.layout {
+  min-width: 1187px;
+  min-height: 722px;
+  width: 50%;
+  height: 40%;
+}
+</style>
