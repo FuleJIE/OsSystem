@@ -97,7 +97,6 @@ export function setAttribute(data) {
     headers: { "Content-Type": "application/json" },
   });
 }
-import requests from "./request";
 
 //获取系统可执行文件（文件系统表）
 export const getFileSystemList = (params) =>
