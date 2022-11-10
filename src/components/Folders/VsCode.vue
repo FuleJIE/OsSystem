@@ -1,13 +1,13 @@
 <template>
-  <Layout folderName="VSvgIcons">
-    <iframe src="https://mehmetsagir.github.io/v-svg-icons/"></iframe>
+  <Layout folderName="VsCode">
+    <iframe src="https://vscode.dev/"></iframe>
   </Layout>
 </template>
 
 <script>
 import Layout from "../Layouts/FolderLayout";
 export default {
-  name: "VSvgIcons",
+  name: "VsCode",
   components: { Layout },
 };
 </script>

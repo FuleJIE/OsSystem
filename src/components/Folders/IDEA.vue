@@ -1,13 +1,13 @@
 <template>
-  <Layout folderName="TodoApp">
-    <iframe src="https://basic-to-do-app.vercel.app/login"></iframe>
+  <Layout folderName="IDEA">
+    <iframe src="https://www.jetbrains.com.cn/idea/"></iframe>
   </Layout>
 </template>
 
 <script>
 import Layout from "../Layouts/FolderLayout";
 export default {
-  name: "TodoApp",
+  name: "IDEA",
   components: { Layout },
 };
 </script>

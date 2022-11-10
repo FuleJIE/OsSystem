@@ -1,6 +1,6 @@
 <template>
   <Layout folderName="Minecraft">
-    <iframe src="https://classic.minecraft.net"></iframe>
+    <iframe src="https://classic.minecraft.net/?join=JcazlHc6DeZnhMfK"></iframe>
   </Layout>
 </template>
 

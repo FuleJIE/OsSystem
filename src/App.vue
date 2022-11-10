@@ -25,7 +25,7 @@ export default {
       installedApps: [],
     };
   },
-  components: { ContextMenu, Navigation, Home, MobileWarning },
+  components: { Navigation, Home, ContextMenu, MobileWarning },
   created() {
     this.$store.dispatch(
       "setFolderSort",
@@ -181,7 +181,7 @@ iframe {
 button {
   background: none;
   border: none;
-  cursor: pointer;
+  user-select: none;
 }
 
 #brightness-overlay {

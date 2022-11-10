@@ -1,9 +1,12 @@
 <template>
-  <ul id="rmenu" class="context-menu" ref="ContextMenu" v-click-outside="hide">
+  <ul id="rmenu" class="context-menu" ref="Menu" v-click-outside="hide">
     <li>
       <button>
         查看(V)
-        <img class="showOtherBrother" src="../assets/file-icons/menu-arr.png" />
+        <img
+          class="showOtherBrother"
+          src="../../assets/file-icons/menu-arr.png"
+        />
       </button>
       <ul class="sub">
         <li
@@ -39,7 +42,10 @@
     <li>
       <button>
         排序方式(O)
-        <img class="showOtherBrother" src="../assets/file-icons/menu-arr.png" />
+        <img
+          class="showOtherBrother"
+          src="../../assets/file-icons/menu-arr.png"
+        />
       </button>
       <ul class="sub">
         <li
@@ -210,7 +216,7 @@ html.dark {
     .sub {
       z-index: 100;
       flex-direction: column;
-      width: 170px;
+      width: 150px;
       padding: 5px 0;
       position: absolute;
       top: 0;

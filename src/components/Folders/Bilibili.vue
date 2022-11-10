@@ -1,13 +1,13 @@
 <template>
-  <Layout folderName="Instagram">
-    <iframe src="https://instagram-clone-next.vercel.app/"></iframe>
+  <Layout folderName="Bilibili">
+    <iframe src="https://www.bilibili.com/"></iframe>
   </Layout>
 </template>
 
 <script>
 import Layout from "../Layouts/FolderLayout";
 export default {
-  name: "Instagram",
+  name: "Bilibili",
   components: { Layout },
 };
 </script>

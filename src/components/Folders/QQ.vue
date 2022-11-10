@@ -1,13 +1,13 @@
 <template>
-  <Layout folderName="AnimateCSS">
-    <iframe src="https://animate-css-clone.vercel.app/"></iframe>
+  <Layout folderName="QQ">
+    <iframe src="https://im.qq.com/index/"></iframe>
   </Layout>
 </template>
 
 <script>
 import Layout from "../Layouts/FolderLayout";
 export default {
-  name: "AnimateCSS",
+  name: "QQ",
   components: { Layout },
 };
 </script>

@@ -226,7 +226,7 @@ html.dark {
       display: flex;
       align-items: center;
       padding: 0 15px;
-      cursor: pointer;
+      user-select: none;
       &:hover {
         background: linear-gradient(to left, rgba(#fff, 0.5), transparent);
       }

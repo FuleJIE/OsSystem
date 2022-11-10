@@ -44,11 +44,11 @@ export default {
 }
 .navFolder {
   height: 30px;
-  width: 180px;
+  min-width: 180px;
   padding: 0 10px;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  user-select: none;
   font-size: 14px;
   overflow: hidden;
   transition: 300ms;

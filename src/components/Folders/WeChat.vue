@@ -1,13 +1,13 @@
 <template>
-  <Layout folderName="FastTyping">
-    <iframe src="https://vue-fast-typing.vercel.app/"></iframe>
+  <Layout folderName="WeChat">
+    <iframe src="https://wx.qq.com/index.php/"></iframe>
   </Layout>
 </template>
 
 <script>
 import Layout from "../Layouts/FolderLayout";
 export default {
-  name: "FastTyping",
+  name: "WeChat",
   components: { Layout },
 };
 </script>

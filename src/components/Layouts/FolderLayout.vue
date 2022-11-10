@@ -47,9 +47,14 @@
           </button>
         </li>
         <li>
-          <!-- 最小化/展示装口 -->
+          <!-- 最小化/展示窗口 -->
           <button @click="fullScreen">
-            <svg x="0px" y="0px" viewBox="0 0 477 477">
+            <svg
+              x="0px"
+              y="0px"
+              viewBox="0 0 477 477"
+              style="transform: rotate(-90deg)"
+            >
               <path
                 d="M426.667,85.333h-34.133V51.2c0-28.277-22.923-51.2-51.2-51.2H51.2C22.923,0,0,22.923,0,51.2v290.133
 			c0,28.277,22.923,51.2,51.2,51.2h34.133v34.133c0,28.277,22.923,51.2,51.2,51.2h290.133c28.277,0,51.2-22.923,51.2-51.2V136.533
@@ -253,13 +258,14 @@ html.dark {
   }
 }
 .container {
-  min-width: 700px;
-  min-height: 300px;
-  width: 45%;
-  height: 50%;
+  min-width: 760px;
+  min-height: 510px;
+  width: 35%;
+  height: 45%;
   display: flex;
   flex-direction: column;
   background: #fafafa;
+  box-shadow: 2px 2px 15px 0px #8e8e8ebf;
   position: absolute;
   top: 25%;
   left: 25%;
@@ -284,6 +290,9 @@ html.dark {
     *::selection {
       background: none;
     }
+    p {
+      user-select: none;
+    }
     .tab-info {
       height: 100%;
       display: flex;
@@ -296,7 +305,7 @@ html.dark {
         padding: 0 10px 0 20px;
         width: 240px;
         font-size: 12px;
-        cursor: pointer;
+        user-select: none;
         border-top-right-radius: 5% 35%;
 
         &.active {
@@ -394,7 +403,7 @@ html.dark {
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        cursor: pointer;
+        user-select: none;
         transition: 250ms;
 
         i {
