@@ -871,7 +871,7 @@ export default {
 }
 
 .tree {
-  width: 12em;
+  width: 15em;
   height: 80em;
   overflow-y: scroll;
   border-right: 0.1em solid #e5e5e5;

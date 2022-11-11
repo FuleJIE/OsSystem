@@ -76,7 +76,7 @@
               sortable
               align="center"
             >
-              <template scope="scope">
+              <template slot-scope="scope">
                 <el-tag v-if="scope.row.status == '0'" style="color: blue"
                   >运行态</el-tag
                 >
@@ -301,7 +301,7 @@
                 sortable
                 align="center"
               >
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-tag v-if="scope.row.useStatus == '1'" style="color: blue"
                     >占用</el-tag
                   >
@@ -319,7 +319,7 @@
                 align="center"
                 width="120px"
               >
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-tag v-if="scope.row.content == '6'" style="color: blue"
                     >系统文件</el-tag
                   >
@@ -349,7 +349,7 @@
                 sortable
                 align="center"
               >
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-tag
                     v-if="scope.row.content == 10 || scope.row.content == 6"
                     style="color: black"
@@ -363,7 +363,7 @@
                 sortable
                 align="center"
               >
-                <template scope="scope">
+                <template slot-scope="scope">
                   <el-tag
                     v-if="scope.row.content == 10 || scope.row.content == 6"
                     style="color: black"
